@@ -3,18 +3,18 @@
 
 @section('content')
 <div class="container-expanded mx-auto px-6 lg:px-8 py-8 pt-[60px] mt-4">
-    
+
     <!-- Sales Visit Card dengan Everything Inside -->
     <div style="background-color: #ffffff; border-radius: 0.5rem; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1); border: 1px solid #e5e7eb; overflow: hidden;">
-        
+
         <!-- Card Header dengan Title dan Action Buttons -->
         <div style="padding: 0.5rem 1.5rem; border-bottom: 1px solid #e5e7eb;">
             <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1">
                 <div>
-                    <h3 style="font-size: 1.125rem; font-weight: 600; color: #111827; margin: 0;">Canvassing Management</h3>
+                    <h3 style="font-size: 1.125rem; font-weight: 600; color: #111827; margin: 0;">Sales Visit Management</h3>
                     <p style="font-size: 0.875rem; color: #6b7280; margin: 0.25rem 0 0 0;">Kelola data kunjungan sales dan informasinya</p>
                 </div>
-                
+
                 <!-- Action Buttons -->
                 <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
                     @if(auth()->user()->canAccess($currentMenuId, 'create'))
@@ -25,17 +25,21 @@
                     </button>
                     @endif
 
-                    <a href="{{ route('salesvisit.export') }}" 
+                    <!--
+                    <a href="{{ route('salesvisit.export') }}"
                         style="display: flex; align-items: center; gap: 0.5rem; padding: 0.625rem 1rem; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; text-decoration: none; border-radius: 0.5rem; font-weight: 500; font-size: 0.875rem; box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2); transition: all 0.2s;">
                         <i class="fas fa-file-export"></i>
                         <span>Export</span>
                     </a>
+                    -->
 
+                    <!--
                     <button onclick="openImportModal()"
                         style="display: flex; align-items: center; gap: 0.5rem; padding: 0.625rem 1rem; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; border: none; border-radius: 0.5rem; font-weight: 500; font-size: 0.875rem; cursor: pointer; box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2); transition: all 0.2s;">
                         <i class="fas fa-file-import"></i>
                         <span>Import</span>
                     </button>
+                    -->
                 </div>
             </div>
         </div>
@@ -57,7 +61,7 @@
                         'actions'
                     ]"
                     :filters="[
-                        'Sales' => $salesUsers, 
+                        'Sales' => $salesUsers,
                         'Province' => $provinces
                     ]"
                     ajaxUrl="{{ route('salesvisit.search') }}"
@@ -114,14 +118,14 @@
 <script>
 document.addEventListener('DOMContentLoaded', () => {
     console.log('🚀 SalesVisit page loaded');
-    
+
     if (typeof TableHandler === 'undefined') {
         console.error('❌ TableHandler class not found. search.js may not be loaded.');
         return;
     }
 
     console.log('✅ Creating TableHandler instance...');
-    
+
     try {
         window.salesVisitTableHandler = new TableHandler({
             tableId: 'salesVisitTable',
@@ -131,9 +135,9 @@ document.addEventListener('DOMContentLoaded', () => {
             columns: ['number', 'visit_date', 'company', 'pic', 'location', 'purpose', 'sales', 'follow_up', 'actions'],
             searchParam: 'q'
         });
-        
+
         console.log('✅ TableHandler initialized successfully');
-        
+
     } catch (error) {
         console.error('❌ Error initializing TableHandler:', error);
     }

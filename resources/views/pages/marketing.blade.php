@@ -3,20 +3,20 @@
 
 @section('content')
 <div class="container-expanded mx-auto px-6 lg:px-8 py-8 pt-[60px] mt-4">
-    
+
     <!-- Sales Management Card dengan Everything Inside -->
     <div style="background-color: #ffffff; border-radius: 0.5rem; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1); border: 1px solid #e5e7eb; overflow: hidden;">
-        
+
         <!-- Card Header dengan Title dan Action Button -->
         <div style="padding: 0.5rem 1.5rem; border-bottom: 1px solid #e5e7eb;">
             <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
                 <div>
-                    <h3 style="font-size: 1.125rem; font-weight: 600; color: #111827; margin: 0;">Sales Management</h3>
-                    <p style="font-size: 0.875rem; color: #6b7280; margin: 0.25rem 0 0 0;">Kelola data sales dan informasinya</p>
+                    <h3 style="font-size: 1.125rem; font-weight: 600; color: #111827; margin: 0;">Team Management</h3>
+                    <p style="font-size: 0.875rem; color: #6b7280; margin: 0.25rem 0 0 0;">Kelola Tim Sales dan informasinya</p>
                 </div>
-                
+
                 @if(auth()->user()->canAccess($currentMenuId, 'create'))
-                <button onclick="openAddSalesModal()" 
+                <button onclick="openAddSalesModal()"
                     style="display: flex; align-items: center; gap: 0.5rem; padding: 0.625rem 1rem; background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); color: white; border: none; border-radius: 0.5rem; font-weight: 500; font-size: 0.875rem; cursor: pointer; box-shadow: 0 2px 4px rgba(99, 102, 241, 0.2); transition: all 0.2s;">
                     <i class="fas fa-plus"></i>
                     <span>Tambah Sales</span>
@@ -105,7 +105,7 @@ function deleteSales(userId, deleteRoute, csrfToken) {
 // Initialize setelah DOM siap
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Marketing page loaded');
-    
+
     if (typeof TableHandler === 'undefined') {
         console.error('TableHandler class not found. search.js may not be loaded.');
         return;
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
             filters: ['status'], // lowercase!
             columns: ['number', 'user', 'phone', 'date_birth', 'alamat', 'status', 'actions']
         });
-        
+
         console.log('TableHandler initialized successfully:', window.salesTableHandler);
     } catch (error) {
         console.error('Error initializing TableHandler:', error);
